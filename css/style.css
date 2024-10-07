@@ -1,0 +1,276 @@
+/* Se define la paleta de colores y la fuente a usar en la pagina */
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario:#ffc107;
+    --secundario:#0097A7;
+    --gris:#757575;
+    --grisClaro: #DFE9F3;
+
+    --fuente-principal:3.8rem;
+}
+/* Globales*/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;/*Sirve para que cada que se haga scroll se enfoque en otra seccion de la pagina*/
+}
+    *, *:before, *:after {
+        box-sizing: inherit;   /* Hack para box model, que el padding no se sume a la dimension del recuadro*/
+}
+
+body{
+    font-size: 16px; /* 1 rem = 10 px*/
+    font-family: "Krub", sans-serif; /* Se carga la familia de la tipografia sacada de google fonts*/
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%); /*Permite hacer un fondo degradado para toda la pagina*/
+}
+/*el class contenedor permite centrar la informacion*/
+.contenedor{
+    max-width:120rem;
+    margin: auto;
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none; /*Quita el subrayado del texto*/
+    text-transform: uppercase; /*Transforma a mayusculas*/
+    font-weight: 700; /*Grosor de la letra*/
+    border-radius: 0.5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 480px) {
+    .boton{
+        width: auto;
+    }
+ }
+
+.boton:hover {
+    cursor: pointer; /*Hace que el cursor se vuelva una mano cuando se pasa por encima del boton  */
+
+}
+.sombra{
+    background-color: var(--blanco);
+    -webkit-box-shadow: 10px 5px 15px 0px rgba(112,112,112,0.47);
+    -moz-box-shadow: 10px 5px 15px 0px rgba(112,112,112,0.47);
+    box-shadow: 10px 5px 15px 0px rgba(112,112,112,0.47);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+
+}
+/* Utilidades */
+
+.w-100{
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-100{
+        width: auto;
+    }
+}
+.alinear-derecha{
+    display: flex;
+    justify-content: flex-end;
+}
+/* Tipografía */
+h1{
+    font-size: 3.8rem;
+}
+
+h2{
+    font-size: 2.8rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+/* Titulos */
+.titulo span{
+    font-size: 2rem;
+}
+
+/* Navegacion principal */
+
+.navegacion-principal{
+    background-color: #0097A7;
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+}
+.nav-bg{
+    background-color: var(--secundario);
+}
+
+.navegacion-principal a{
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/* hero */
+.hero{
+    background-image: url(../img/planos.jpg);
+    background-repeat: no-repeat; /*Hace que la imagen no se repita cuando se acabe*/
+    background-size: cover; /*Ajusta el tamaño de la imagen a la pantalla*/
+    height: 450px;
+    position: relative; 
+}
+
+.contenido-hero{
+position: absolute; /*Asi se puede ubicar de manera absoluta con relacion a el contenedor padre*/
+background-color: rgba( 0,0,0, 0.6); /** Anterior**/
+background-color: rgb(0 0 0 /60%); /**Nueva**/
+width: 100%; /* Que sea el 100% del contenedor padre*/
+height: 100%; /* Que sea el 100% del contenedor padre*/
+display: flex;
+flex-direction: column;
+align-items: center; /**Alinear horizontalmente**/
+justify-content: center; /**Alinear verticalmente**/
+}
+
+.contenido-hero h2, .contenido-hero p {
+    color: var(--blanco);
+
+}
+
+.ubicacion {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Servicios */
+.servicios {
+    display: grid;
+    grid-template-columns: 1 fr; /*Se tiene el ancho de las columnas en terminos de fracciones del 100% (ancho del contenedor padre)*/
+    /* grid-template-columns: repeat(3, 1fr); es otra forma de escribir lo mismo anteriormente mencionado */
+    /* grid: 200px 200px / 300px 300px; Resume lo anterior, primero ancho de las filas y luego ancho de las columnas */
+}
+
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem; /*Separa el texto de la linea divisora de las columnas*/
+    }
+}
+
+.servicios, .navegacion-principal, .formulario { /*Definimos los puntos donde el scroll va a parar*/
+    scroll-snap-align:center;
+    scroll-snap-stop: always;
+}
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: 400;
+}
+
+.servicio p {
+    line-height: 2rem; /*Interlineado*/
+    text-align: center;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Formulario */
+
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100% );/*Asigna el valor más pequeño a el recuadro y asi ahorrar unos media queries*/
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--primario);
+    margin: auto;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Campos */
+@media (min-width: 768px ) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+        grid-template-rows: auto auto 20rem;
+    }
+}
+
+.campo:nth-child(3),.campo:nth-child(4) { /*Con esto como tenemos 4 div con la clase campo, esta funcion permite escoger el 3 hijo */
+    grid-column: 1/3; /*Con esto se define de que a que columna va a ir el elemento mientras con grid-template es para asignar dimensiones de la grilla*/
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 0.5rem;   
+}
+.campo textarea {
+    height: 20rem;
+}
+
+/* Footer */
+.footer{
+    text-align: center;
+}
